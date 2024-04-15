@@ -36,6 +36,7 @@ class SpotPolicy
      */
     public function create(): bool
     {
+        return true;
         //App\Models\Role
         Gate::allowIf(function (){
             return User::isAdminitrative(); 

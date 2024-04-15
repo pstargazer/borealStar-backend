@@ -58,6 +58,11 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        'weather' => [
+            // 'driver' => 'monolog',
+            'path' => storage_path('logs/weather.log'),
+        ],
+
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),

@@ -17,12 +17,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        // $schedule->command('wthr:suspend-inactive')
+            // ->daily()
+            // ->appendOutputTo(storage_path('logs/cities.log'));
         $schedule->command('wthr:fetch-info')
             ->hourly()
-            // ->everyTenSeconds()
-            ->appendOutputTo('/storage/logs/weather.log');
-        // $schedule->command('wthr:fetch-info')->hourly()->timezone(env('APP_TIMEZONE'));
+            ->appendOutputTo(storage_path('logs/weather.log'));
+        // $schedule->command('wthr:fetch-alerts')
+            // ->hourly()
+            // ->appendOutputTo(storage_path('logs/alerts.log'));
 
     }
 

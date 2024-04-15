@@ -55,7 +55,7 @@ class FetchInfo extends Command
                 $msg = sprintf("Unable to fetch data in {$resp->name}, code {$resp->cod}\n");
             }
             print($msg);
-            Log::info($msg);
+            Log::debug($msg);
         }
     }
 }

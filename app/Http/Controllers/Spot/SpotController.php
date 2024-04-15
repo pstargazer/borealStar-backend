@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Spot;
 
 // use App\Http\Controllers\Controller;
+use App\Http\Requests\Spot\ValidateSpotRequest;
 use App\Models\Spot;
 use Illuminate\Http\Request;
 use MStaack\LaravelPostgis\Geometries\Point;
@@ -30,11 +31,12 @@ class SpotController extends BaseController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ValidateSpotRequest $request)
     {
         // TODO: validation
         $this->authorize('create');
         $validated = $request;
+        // return ['msg' => 'request'];
         $new_spot = Spot::create([
             'coordinates' => new Point($validated->lattitude, $validated->longitude)
         ]);

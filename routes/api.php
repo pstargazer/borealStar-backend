@@ -91,5 +91,6 @@ Route::group([
     Route::controller('SpotController')->group(function() {
         Route::get('/', 'index');
         Route::post('/create', 'store');
+        Route::post('/geocode', 'geocode');
     });
 });
