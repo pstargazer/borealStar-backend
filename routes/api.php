@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::group([
-    'prefix' => 'auth'
+    "prefix" => "auth"
 ], function () {
     Route::controller('AuthController')->group(function() {
         Route::post('/register', 'register');
