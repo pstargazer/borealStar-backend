@@ -1,7 +1,9 @@
 <?php
+namespace App\Http\Controllers;
 
+// use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-
+use Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +22,8 @@ use Illuminate\Support\Facades\Route;
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// \App\Http\Controllers\Auth::routes();
+Auth::routes();
+
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');

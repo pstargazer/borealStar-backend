@@ -74,12 +74,16 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'forecast',
+    'prefix' => 'forecasts',
+    'namespace' => '\App\Http\Controllers\Forecast'
     // 'middleware' => ['auth:sanctum']
 ], function() {
-    Route::controller('ForecastController')->group(function() {
-
-    });
+    // Route::get('/', 'IndexController');
+    Route::get('/', 'IndexController@__invoke');
+    Route::get('/paginated', 'PaginateController');
+    // Route::post('/delete', 'PaginateController');
+    // Route::controller('ForecastController')->group(function() {
+    // });
 });
 
 
@@ -88,9 +92,10 @@ Route::group([
     'namespace' => '\App\Http\Controllers\Spot'
     // 'middleware' => ['auth:sanctum']
 ], function() {
-    Route::controller('SpotController')->group(function() {
-        Route::get('/', 'index');
-        Route::post('/create', 'store');
-        Route::post('/geocode', 'geocode');
-    });
+    Route::get('/paginated','IndexController');
+    // Route::controller('SpotController')->group(function() {
+        // Route::get('/', 'index');
+        // Route::post('/create', 'store');
+        // Route::post('/geocode', 'geocode');
+    // });
 });

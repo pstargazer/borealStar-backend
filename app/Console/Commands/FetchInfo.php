@@ -52,7 +52,8 @@ class FetchInfo extends Command
                     'spot_id' => $spot['id'],
                     'weather_source_id' => 1
                 ]);
-                $msg = sprintf("Unable to fetch data in {$resp->name}, code {$resp->cod}\n");
+                if(isset($resp->name)) $msg = sprintf("Unable to fetch data in {$resp->name}, code {$resp->cod}\n");
+                else   $msg = sprintf("Unable to fetch data, code {$resp->cod}\n");
             }
             print($msg);
             Log::debug($msg);

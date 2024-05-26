@@ -51,4 +51,8 @@ class User extends Authenticatable
     public function isAdministrative(){
         return $this->roleProps()['administrative'];
     }
+
+    public function logout() {
+        
+    }
 }
