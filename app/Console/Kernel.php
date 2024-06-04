@@ -19,11 +19,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('wthr:fetch-info')
-            ->hourly()
-            // ->everyTenSeconds()
-            ->appendOutputTo('/storage/logs/weather.log');
-        // $schedule->command('wthr:fetch-info')->hourly()->timezone(env('APP_TIMEZONE'));
-
+            ->hourly();
     }
 
     /**
