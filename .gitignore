@@ -17,3 +17,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# to aviod the problems with autodeploy,remove this from git
+composer.lock
+package-lock.json
