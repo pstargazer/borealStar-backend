@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Broadcasting\Weather;
+namespace App\Broadcasting;
 
 use App\Models\User;
 
-class FetchChannel 
+class WeatherChannel
 {
     /**
      * Create a new channel instance.
@@ -19,7 +19,6 @@ class FetchChannel
      */
     public function join(User $user): array|bool
     {
-        return true;
-        // return true;
+        //
     }
 }

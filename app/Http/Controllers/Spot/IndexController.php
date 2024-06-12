@@ -14,7 +14,11 @@ class IndexController extends BaseController
     public function __invoke(Request $request)
     {
         //
-        return $this->service->index();
+        // $validated = $request->validate();
+        if (!$request) return $this->service->index();
+        else {
+            return $this->service->paginate(5);
+        }
         // return $spots = Spot::all()->toArray();
     }
 }

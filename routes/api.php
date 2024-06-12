@@ -93,7 +93,7 @@ Route::group([
     Route::controller('SpotController')->group(function() {
         Route::get('/', 'index');
         Route::post('/create', 'store');
-    });
+});
 });
  */
 
@@ -105,6 +105,8 @@ Route::group([
 ], function() {
     // Route::controller('SpotController')->group(function() {
         Route::get('/', 'IndexController');
-        // Route::post('/create', 'store');
+        Route::get('/geocode_reverse', "SpotController@gReverse");
+        Route::get('/geocode_direct', "SpotController@gDirect");
+        Route::post('/create', 'SpotController@store');
     // });
 });
