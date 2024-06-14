@@ -28,7 +28,7 @@ class SpotController extends BaseController
      */
     public function create()
     {
-
+        
     }
 
     /* 
@@ -113,18 +113,17 @@ class SpotController extends BaseController
     public function store(Request $request)
     {
         // TODO: validation
-        $this->authorize('create');
+        // $this->authorize('create');
         $validated = $request;
 
         $names = json_decode(
-            $this->geocode_reverse($validated->lattitude, $validated->longitude),
-            JSON_UNESCAPED_UNICODE
+            $this->geocode_reverse($validated->lattitude, $validated->longitude)
         );
         if ($names[0] === "error")
             return Response::json(array("message" => $names[1]));
-
+        // return $names;
         $new_spot = Spot::create([
-            "names" => $names,
+            "names" => json_encode($names, JSON_UNESCAPED_LINE_TERMINATORS),
             'coordinates' => new Point($validated->lattitude, $validated->longitude)
         ]);
         return $new_spot;

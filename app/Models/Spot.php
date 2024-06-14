@@ -10,6 +10,6 @@ class Spot extends Model
 {
     use HasFactory, PostgisTrait;
 
-    public $fillable = ['coordinates'];
+    public $fillable = ['coordinates', "names"];
     public $postgisFields = ['coordinates'];
 }
