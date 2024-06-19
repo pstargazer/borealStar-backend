@@ -17,7 +17,7 @@ class IndexController extends BaseController
         // $validated = $request->validate();
         if (!$request) return $this->service->index();
         else {
-            return $this->service->paginate(5);
+            return $this->service->paginate($request->page, $request->per_page);
         }
         // return $spots = Spot::all()->toArray();
     }

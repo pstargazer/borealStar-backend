@@ -13,7 +13,7 @@ class Service
         return $spots;
     }
 
-    public function paginate($perpage) {
+    public function paginate($page, $perpage = 5) {
         $spots = Spot::paginate($perpage);
         return $spots;
     }
