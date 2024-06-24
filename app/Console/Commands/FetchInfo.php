@@ -31,7 +31,6 @@ class FetchInfo extends Command
     {
         // Log::useFiles();
         $apikey = env('OWM_APIKEY');
-        // $APIKEY = "894dbd1df920520cb8a520e09f6fb708";
         $spots = Spot::all()->toArray();
         foreach ($spots as $spot) {
             $response = Http::get("https://api.openweathermap.org/data/2.5/weather?lat={$spot['coordinates']->getLat()}&lon={$spot['coordinates']->getLng()}&appid={$apikey}");
@@ -47,12 +46,14 @@ class FetchInfo extends Command
                 ]);
                 $msg = sprintf("Successfully fetched data in {$resp->name}\n");
             } else {
+                $resp = json_decode($response->body());
+                $name = json_decode($spot['names'], true)[0]['name'] ;
                 WeatherInfo::create([
                     'response' => $response->body(),
                     'spot_id' => $spot['id'],
                     'weather_source_id' => 1
                 ]);
-                $msg = sprintf("Unable to fetch data in {$resp->name}, code {$resp->cod}\n");
+                $msg = sprintf("Unable to fetch data in {$name}, code {$resp->cod}\n");
             }
             print($msg);
             Log::info($msg);

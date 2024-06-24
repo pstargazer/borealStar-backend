@@ -8,9 +8,12 @@ use App\Models\User;
 use App\Http\Requests\Spots\GDirectRequest;
 use App\Http\Requests\Spots\GReverseRequest;
 
+use App\Models\WeatherInfo;
 use MStaack\LaravelPostgis\Geometries\Point;
 use Illuminate\Support\Facades\Http;
 use Response;
+
+use DB;
 
 class Service
 {
@@ -24,7 +27,7 @@ class Service
 
     public function paginate($page, $perpage = 5)
     {
-        $spots = Spot::paginate($perpage);
+        $spots = Spot::orderBy("created_at", "asc")->paginate($perpage);
         return $spots;
     }
 
@@ -83,5 +86,15 @@ class Service
     }
 
 
-    // public function 
+    public function single($id){
+        $spot = Spot::find($id);
+        $latestWeather = WeatherInfo::orderBy("created_at", "desc")
+            ->where("spot_id", "=", $spot['id'])
+            ->limit(7)->get();
+        
+        return [
+            "spot" => $spot,
+            "weather" => $latestWeather
+        ];
+    }
 }

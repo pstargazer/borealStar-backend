@@ -110,6 +110,7 @@ Route::group([
         Route::get('/geocode_direct', "SpotController@gDirect");
         Route::post('/create', 'SpotController@store');
         Route::get('/my', "DashboardController");
+        Route::get('/{id}', "SingleController");
 
         // last 
         // Route::get('/{id}/latest', "");

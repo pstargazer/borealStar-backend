@@ -10,9 +10,9 @@ class SingleController extends BaseController
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke($id)
     {
-        //
-        
+        $data =  $this->service->single($id);
+        return $data;
     }
 }
