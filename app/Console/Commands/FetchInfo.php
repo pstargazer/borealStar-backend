@@ -48,11 +48,11 @@ class FetchInfo extends Command
             } else {
                 $resp = json_decode($response->body());
                 $name = json_decode($spot['names'], true)[0]['name'] ;
-                WeatherInfo::create([
-                    'response' => $response->body(),
-                    'spot_id' => $spot['id'],
-                    'weather_source_id' => 1
-                ]);
+                // WeatherInfo::create([
+                    // 'response' => $response->body(),
+                    // 'spot_id' => $spot['id'],
+                    // 'weather_source_id' => 1
+                // ]);
                 $msg = sprintf("Unable to fetch data in {$name}, code {$resp->cod}\n");
             }
             print($msg);
