@@ -36,9 +36,9 @@ Route::group([
     Route::controller('AuthController')->group(function() {
         Route::post('/register', 'register');
         Route::post('/login', 'login');
+        Route::post('/refresh', 'refresh');
+        Route::post('/logout', 'logout');
         Route::middleware('auth:sanctum')->group(function() {
-            Route::post('/logout', 'logout');
-            Route::post('/refresh', 'refresh');
             // Route::post('/me', 'userinfo');
             // Route::post('/')
         });
@@ -105,8 +105,13 @@ Route::group([
 ], function() {
     // Route::controller('SpotController')->group(function() {
         Route::get('/', 'IndexController');
+        // geocoding 
         Route::get('/geocode_reverse', "SpotController@gReverse");
         Route::get('/geocode_direct', "SpotController@gDirect");
         Route::post('/create', 'SpotController@store');
+        Route::get('/my', "DashboardController");
+
+        // last 
+        // Route::get('/{id}/latest', "");
     // });
 });

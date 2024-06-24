@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Spot;
 // use App\Http\Controllers\Controller;
 use App\Http\Requests\Spots\GDirectRequest;
 use App\Http\Requests\Spots\GReverseRequest;
+
 use App\Models\Spot;
 use Illuminate\Http\Request;
 use MStaack\LaravelPostgis\Geometries\Point;
@@ -65,7 +66,7 @@ class SpotController extends BaseController
         direct geocoding route
     */
     public function gDirect(GDirectRequest $request){
-
+        return $this->service->geocode_dir($request->query, $request->limit);
     }
 
     /* 
@@ -104,7 +105,7 @@ class SpotController extends BaseController
         reverse geocoding route
     */
     public function gReverse(GReverseRequest $request){
-        return $this->geocode_reverse($request->lat, $request->lon, $request->limit);
+        return $this->service->geocode_rev($request->lat, $request->lon, $request->limit);
     }
 
     /**

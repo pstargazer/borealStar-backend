@@ -22,7 +22,8 @@ class GDirectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "query" => "required|string"
+            "query" => "required|string",
+            "limit" => "integer|min:1"
         ];
     }
 }
