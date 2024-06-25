@@ -120,11 +120,11 @@ class SpotController extends BaseController
         $names = json_decode(
             $this->geocode_reverse($validated->lattitude, $validated->longitude)
         );
-        if ($names[0] === "error")
-            return Response::json(array("message" => $names[1]));
+        // if ($names->cod)
+            // return $names;
         // return $names;
         $new_spot = Spot::create([
-            "names" => json_encode($names, JSON_UNESCAPED_LINE_TERMINATORS),
+            "names" => json_encode($names, JSON_UNESCAPED_LINE_TERMINATORS) || "N/A",
             'coordinates' => new Point($validated->lattitude, $validated->longitude)
         ]);
         return $new_spot;
