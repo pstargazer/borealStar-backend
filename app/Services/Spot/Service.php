@@ -7,13 +7,14 @@ use App\Models\User;
 
 use App\Http\Requests\Spots\GDirectRequest;
 use App\Http\Requests\Spots\GReverseRequest;
+use Illuminate\Support\Facades\Log;
 
 use App\Models\WeatherInfo;
 use MStaack\LaravelPostgis\Geometries\Point;
 use Illuminate\Support\Facades\Http;
 use Response;
 
-use DB;
+// use DB;
 
 class Service
 {
@@ -40,7 +41,7 @@ class Service
     {
         $APP_ID = env("OWM_APIKEY");
         try {
-            \Log::info("getting coords for feature: [{$query}];");
+            Log::info("getting coords for feature: [{$query}];");
             $response = Http::get("http://api.openweathermap.org/geo/1.0/direct?q={$query}&limit={$limit}&appid={$APP_ID}");
             $body = $response->body();
 
@@ -53,7 +54,7 @@ class Service
             //throw errors
             $datetime = date('Y-m-d H:i:s');
             $error = $th->getMessage();
-            \Log::error("[{$datetime}] ERR: Unable fetch coords for feature: [{$query}]: {$error}");
+            Log::error("[{$datetime}] ERR: Unable fetch coords for feature: [{$query}]: {$error}");
 
             return ["error" => $error];
         }

@@ -14,7 +14,8 @@
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.4",
         "mstaack/laravel-postgis": "^6.1",
-        "pusher/pusher-php-server": "^7.2"
+        "pusher/pusher-php-server": "^7.2",
+        "spatie/laravel-health": "^1.30"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -50,6 +51,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "test": [
+            "php artisan test --env=.env"
         ]
     },
     "extra": {
