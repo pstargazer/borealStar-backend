@@ -9,6 +9,7 @@ use \app\Models\Spot;
 
 class SpotsRoutesTest extends TestCase
 {
+    use RefreshDatabase;
     private $prefix = "/api/spots";
     /**
      * A basic feature test example.
